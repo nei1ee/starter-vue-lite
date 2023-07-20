@@ -10,11 +10,10 @@ import {
 } from 'unocss'
 
 export default defineConfig({
-  // gray-200 dark:gray-700
   shortcuts: {
     'u-bg': 'bg-gray-100 dark:bg-black',
     'u-bg-2': 'bg-white dark:bg-[#1C1C1E]',
-    'u-border': 'border-[#EBEDF0] dark:border-[#3A3A3C]',
+    'u-border': 'border-[#DCDFE6] dark:border-[#3A3A3C]',
     'u-active': 'bg-[#F2F3F5] dark:!bg-[#3A3A3C]',
     'u-text-color': 'text-[#323233] dark:text-[#F5F5F5]',
     'u-text-color-2': 'text-[#969799] dark:text-[#707070]',

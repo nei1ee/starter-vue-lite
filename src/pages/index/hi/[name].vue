@@ -1,16 +1,15 @@
 <script setup lang="ts">
-const props = defineProps<{ name: string }>()
-const router = useRouter()
-const user = useUserStore()
+const { currentRoute, back } = useRouter()
+const userStore = useUserStore()
 
-watchEffect(() => {
-  user.setNewName(props.name)
-})
+const name = computed(() => currentRoute.value.params.name as string)
+
+userStore.setNewName(name.value)
 </script>
 
 <template>
   <div class="px-4 pt-10">
-    <div class="i-carbon-pedestrian text-5xl" />
+    <div class="i-tabler-run text-5xl" />
 
     <p>
       {{ `Hi, ${name}` }}
@@ -20,11 +19,11 @@ watchEffect(() => {
       <em class="text-sm opacity-75">Demo of dynamic route</em>
     </p>
 
-    <template v-if="user.otherNames.length">
+    <template v-if="userStore.otherNames.length">
       <p mt-4 text-sm>
         <span opacity-75>Also known as:</span>
         <ul>
-          <li v-for="otherName in user.otherNames" :key="otherName">
+          <li v-for="otherName in userStore.otherNames" :key="otherName">
             <router-link :to="`/hi/${otherName}`" replace>
               {{ otherName }}
             </router-link>
@@ -35,8 +34,8 @@ watchEffect(() => {
 
     <div class="m-4">
       <button
-        class="inline-block cursor-pointer rounded bg-teal-700 px-4 py-1 text-white hover:bg-teal-800"
-        @click="router.back()"
+        class="inline-block cursor-pointer rounded bg-blue-500 px-4 py-1 text-white hover:bg-blue-600"
+        @click="back()"
       >
         Back
       </button>
