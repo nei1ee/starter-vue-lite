@@ -6,7 +6,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
 import Components from 'unplugin-vue-components/vite'
 import UnoCSS from 'unocss/vite'
-import Inspect from 'vite-plugin-inspect'
+import VueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,6 +22,9 @@ export default defineConfig({
   },
 
   plugins: [
+    // https://github.com/webfansplz/vite-plugin-vue-devtools
+    VueDevTools(),
+
     // https://github.com/posva/unplugin-vue-router
     VueRouter({
       dts: 'src/typings/typed-router.d.ts',
@@ -38,9 +41,10 @@ export default defineConfig({
         '@vueuse/core',
         VueRouterAutoImports,
       ],
-      dts: 'src/auto-imports.d.ts',
+      dts: 'src/typings/auto-imports.d.ts',
       dirs: [
         'src/stores',
+        'src/composables',
       ],
       vueTemplate: true,
     }),
@@ -53,9 +57,5 @@ export default defineConfig({
     // https://github.com/antfu/unocss
     // see uno.config.ts for config
     UnoCSS(),
-
-    // https://github.com/antfu/vite-plugin-inspect
-    // Visit http://localhost:port/__inspect/ to see the inspector
-    Inspect(),
   ],
 })

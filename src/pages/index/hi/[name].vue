@@ -2,7 +2,11 @@
 const { currentRoute, back } = useRouter()
 const userStore = useUserStore()
 
-const name = computed(() => currentRoute.value.params.name as string)
+const name = computed(() => {
+  if (currentRoute.value.name === '//hi/[name]')
+    return currentRoute.value.params.name
+  return ''
+})
 
 userStore.setNewName(name.value)
 </script>
