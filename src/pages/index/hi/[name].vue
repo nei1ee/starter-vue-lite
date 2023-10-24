@@ -28,9 +28,9 @@ userStore.setNewName(name.value)
         <span opacity-75>Also known as:</span>
         <ul>
           <li v-for="otherName in userStore.otherNames" :key="otherName">
-            <router-link :to="`/hi/${otherName}`" replace>
+            <RouterLink :to="`/hi/${otherName}`" replace>
               {{ otherName }}
-            </router-link>
+            </RouterLink>
           </li>
         </ul>
       </p>
