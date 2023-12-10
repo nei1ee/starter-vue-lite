@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useUserStore } from '~/stores/user'
+
 const { currentRoute, back } = useRouter()
 const userStore = useUserStore()
 

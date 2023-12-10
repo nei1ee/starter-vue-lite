@@ -60,5 +60,14 @@
     "json",
     "jsonc",
     "yaml"
+  ],
+  "cSpell.words": [
+    "composables",
+    "nprogress",
+    "pinia",
+    "tabler",
+    "unocss",
+    "unplugin",
+    "vueuse"
   ]
 }

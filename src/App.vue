@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
 import { isDark, preferredDark } from '~/composables/dark'
 
 useHead({
-  title: 'Stater Vue',
+  title: 'Stater Vue Lite',
   meta: [
     { name: 'description', content: 'Opinionated Vue Starter Template' },
     {

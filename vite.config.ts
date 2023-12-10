@@ -37,15 +37,9 @@ export default defineConfig({
       imports: [
         'vue',
         'pinia',
-        '@vueuse/head',
-        '@vueuse/core',
         VueRouterAutoImports,
       ],
       dts: 'src/typings/auto-imports.d.ts',
-      dirs: [
-        'src/stores',
-        'src/composables',
-      ],
       vueTemplate: true,
     }),
 
