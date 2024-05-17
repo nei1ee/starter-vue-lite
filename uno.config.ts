@@ -1,3 +1,6 @@
+import type {
+  Preset,
+} from 'unocss'
 import {
   defineConfig,
   presetAttributify,
@@ -19,8 +22,15 @@ export default defineConfig({
     'u-text-color-2': 'text-[#969799] dark:text-[#707070]',
     'u-text-color-3': 'text-[#C8C9CC] dark:text-[#4D4D4D]',
   },
+  outputToCssLayers: true,
   presets: [
     presetUno(),
+    {
+      name: 'inline-preset',
+      postprocess: (obj) => {
+        console.log('postprocess', obj)
+      },
+    },
     presetAttributify(),
     presetIcons({
       scale: 1.2,
