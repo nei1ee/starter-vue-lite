@@ -1,11 +1,11 @@
 import { resolve } from 'node:path'
-import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
-import VueRouter from 'unplugin-vue-router/vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
-import Components from 'unplugin-vue-components/vite'
 import UnoCSS from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
+import VueRouter from 'unplugin-vue-router/vite'
+import { defineConfig } from 'vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
@@ -26,9 +26,7 @@ export default defineConfig({
     VueDevTools(),
 
     // https://github.com/posva/unplugin-vue-router
-    VueRouter({
-      dts: 'src/typings/typed-router.d.ts',
-    }),
+    VueRouter(),
 
     Vue(),
 
@@ -37,16 +35,15 @@ export default defineConfig({
       imports: [
         'vue',
         'pinia',
+        '@vueuse/head',
+        '@vueuse/core',
         VueRouterAutoImports,
       ],
-      dts: 'src/typings/auto-imports.d.ts',
       vueTemplate: true,
     }),
 
     // https://github.com/antfu/unplugin-vue-components
-    Components({
-      dts: 'src/typings/components.d.ts',
-    }),
+    Components(),
 
     // https://github.com/antfu/unocss
     // see uno.config.ts for config

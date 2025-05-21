@@ -1,20 +1,26 @@
+/* eslint-disable no-console */
 import type { App } from 'vue'
-import type { Router } from 'vue-router'
-import { createRouter, createWebHistory } from 'vue-router/auto'
-import NProgress from 'nprogress'
+import { createRouter, createWebHistory } from 'vue-router'
+import { handleHotUpdate, routes } from 'vue-router/auto-routes'
 
-export const router: Router = createRouter({
+export const router = createRouter({
   history: createWebHistory(),
+
+  routes,
 })
 
 router.beforeEach((to, from) => {
-  if (to.path !== from.path)
-    NProgress.start()
+  console.log('===>beforeEach', to, from)
 })
 
 router.afterEach(() => {
-  NProgress.done()
+  console.log('===>afterEach')
 })
+
+// This will update routes at runtime without reloading the page
+if (import.meta.hot) {
+  handleHotUpdate(router)
+}
 
 export function setupRouter(app: App<Element>) {
   app.use(router)

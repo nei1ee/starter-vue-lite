@@ -1,13 +1,10 @@
-import type {
-  Preset,
-} from 'unocss'
 import {
   defineConfig,
   presetAttributify,
   presetIcons,
   presetTypography,
-  presetUno,
   presetWebFonts,
+  presetWind3,
   transformerDirectives,
   transformerVariantGroup,
 } from 'unocss'
@@ -24,13 +21,7 @@ export default defineConfig({
   },
   outputToCssLayers: true,
   presets: [
-    presetUno(),
-    {
-      name: 'inline-preset',
-      postprocess: (obj) => {
-        console.log('postprocess', obj)
-      },
-    },
+    presetWind3(),
     presetAttributify(),
     presetIcons({
       scale: 1.2,
